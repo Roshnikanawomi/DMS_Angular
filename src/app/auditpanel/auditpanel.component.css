@@ -1,0 +1,42 @@
+.table {
+    width: 90%;
+    align-content: center;
+    border: 0.3em solid black;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.2em;
+}
+
+thead {
+    background-color: rgb(128, 115, 121);
+}
+
+h2 {
+    text-align: center;
+    color: rgb(17, 16, 16);
+}
+
+table,
+th,
+td {
+    border: 0.7px solid rgb(14, 14, 15);
+}
+
+table,
+th {
+    font-size: 1.5em;
+}
+
+table,
+td {
+    font-size: 1.2em;
+    font-weight: 500;
+    font-family: monospace, 'Times New Roman', Times, serif;
+}
+
+.middle {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+}

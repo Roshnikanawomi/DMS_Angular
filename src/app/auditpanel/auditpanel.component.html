@@ -1,0 +1,45 @@
+<div>
+    <h2>Audit Panel</h2>
+    <div class="middle">
+        <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input formControlName="userId" class="form-control mr-sm-2" type="search" placeholder="Search by User Id" aria-label="Search" (ngModelChange)="searchName()">
+                    <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchName()">Search</button>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <input formControlName="docId" class="form-control mr-sm-2" type="search" placeholder="Search by Document Id" aria-label="Search" (ngModelChange)="searchName()">
+                    <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchName()">Search</button>
+                </div>
+                <div class="form-group col-md-6">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="reset" (click)="clearsearch()">Clear Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>UserId</th>
+                <th>UserName</th>
+                <th>DocumentId</th>
+                <th>Title</th>
+                <th>Action</th>
+                <th>Date & Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let a of Audits" class="table-info">
+                <td>{{a.userId}}</td>
+                <td>{{a.Allu[0].Name}}</td>
+                <td>{{a.docId}}</td>
+                <td>{{a.All[0].Title}}</td>
+                <td>{{a.Action}}</td>
+                <td>{{a.Date| date:"medium"}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

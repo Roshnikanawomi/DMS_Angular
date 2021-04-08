@@ -1,0 +1,72 @@
+<div>
+    <h2>Archived Documents</h2>
+    {{registrationForm.value.NewExpireDate}} {{currenDoc}}
+
+    <div class="middle">
+        <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm">
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <input formControlName="docId" class="form-control mr-sm-2" type="search" placeholder="Search by Document Id" aria-label="Search" (ngModelChange)="searchName()">
+                    <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchName()">Search</button>
+                </div>
+                <div class="form-group col-md-6">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="reset" (click)="clearsearch()">ClearSearch</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>DocumentId</th>
+                <th>AdminId</th>
+                <th>Title</th>
+                <th>Type</th>
+                <th>ExpiredDate</th>
+                <th>Restore</th>
+                <th>Archieved</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let d of Darchive" class="table-info">
+            <ng-container *ngIf="d.Achieved==1">
+                <td>{{d.docId}}</td>
+                <td>{{d.AdminId}}</td>
+                <td>{{d.Title}}</td>
+                <td>{{d.Type}}</td>
+                <td>{{d.ExpiredDate | date:"medium"}}</td>
+                <td><button (click)="assigndoc(d.docId)" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">UnArchive</button></td>
+                <td>{{d.Achieved}}</td>
+            </ng-container>
+        </tr>
+    </table>
+
+
+</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Change ExpiredDate</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #modelclose>
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+
+                <form [formGroup]="registrationForm">
+                    <div class="form-group">
+                        <label>New ExpireDate</label>
+                        <input formControlName="NewExpireDate" type="datetime-local" class="form-control">
+
+                    </div>
+                     <button type="reset" class="btn btn btn-outline-dark">Reset</button>&nbsp;&nbsp;&nbsp;
+                    <button (click)="restore()" type="submit" class="btn btn-primary">Submit</button>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
